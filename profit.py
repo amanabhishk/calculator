@@ -17,8 +17,8 @@ def gain(d,PRICE):
         spent.append(x)
         y = (d[key][1]/d[key][2])*PRICE
         gained.append(y)
-        print("{0} {1:.0f} {2:.0f} {3:.0f}".format(key,x,y,y-x))
-    print("Total {0:.0f} {1:.0f} {2:.0f}".format(sum(spent),sum(gained),sum(gained)-sum(spent)))
+        print("{0} {1:.0f} {2:.0f} {3:+.0f}".format(key,x,y,y-x))
+    print("Total {0:.0f} {1:.0f} {2:+.0f}".format(sum(spent),sum(gained),sum(gained)-sum(spent)))
     return np.array(spent), np.array(gained), np.array(gained)-np.array(spent)
 
 if __name__=="__main__":
@@ -35,6 +35,6 @@ if __name__=="__main__":
         print("--------")
         x = BTC_[0].sum()+LTC_[0].sum()+ETH_[0].sum()
         y = BTC_[1].sum()+LTC_[1].sum()+ETH_[1].sum()
-        print("Total {0:.0f} {1:.0f} {2:.0f}".format(x,y,y-x))
+        print("Total {0:.0f} {1:.0f} {2:+.0f}".format(x,y,y-x))
         print("\n")
 
