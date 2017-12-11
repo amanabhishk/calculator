@@ -1,21 +1,26 @@
 import numpy as np
 import sys
+import csv
+
 BTC, LTC, ETH  = dict(), dict(), dict()
 
-BTC["Nov26"] = [100,97.01,9212.64]
-BTC["Dec07"] = [400,394.13,15218.40]
-
-LTC["Dec07"] = [100,97.01,98.98]
-
-ETH["Dec07"] = [100,97.01,431.65]
+with open('transactions.txt') as infile:
+    reader = csv.reader(infile)
+    for rows in reader:
+        if rows[0] == "BTC":
+            BTC[rows[1]] = rows[2:]
+        if rows[0] == "ETH":
+            ETH[rows[1]] = rows[2:]
+        if rows[0] == "LTC":
+            LTC[rows[1]] = rows[2:]
 
 def gain(d,PRICE):
     PRICE = float(PRICE)
     spent, gained = list(), list()
     for index, key in enumerate(d):
-        x = d[key][0]
+        x = float(d[key][0])
         spent.append(x)
-        y = (d[key][1]/d[key][2])*PRICE
+        y = (float(d[key][1])/float(d[key][2]))*PRICE
         gained.append(y)
         print("{0} {1:.0f} {2:.0f} {3:+.0f}".format(key,x,y,y-x))
     print("Total {0:.0f} {1:.0f} {2:+.0f}".format(sum(spent),sum(gained),sum(gained)-sum(spent)))

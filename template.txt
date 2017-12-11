@@ -1,0 +1,1 @@
+[BTC/ETH/LTC],mmmdd,amount paid, amount paid minus fees, price of currency
