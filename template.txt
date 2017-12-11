@@ -1,1 +1,4 @@
 [BTC/ETH/LTC],mmmdd,amount paid, amount paid minus fees, price of currency
+Example rows:
+BTC,100,97.03,6900.67
+ETH,100,96.34,380.22
