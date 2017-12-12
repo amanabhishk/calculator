@@ -1,3 +1,4 @@
+import requests
 import numpy as np
 import sys
 import csv
@@ -27,19 +28,18 @@ def gain(d,PRICE):
     return np.array(spent), np.array(gained), np.array(gained)-np.array(spent)
 
 if __name__=="__main__":
-    if len(sys.argv) != 4:
-        print("$python profit.py BTC_price ETH_price LTC_price")
-    else:
-        print("\n\nBTC:")
-        BTC_= gain(BTC,sys.argv[1])
-        print("\nETH:")
-        ETH_ = gain(ETH,sys.argv[2])
-        print("\nLTC:")
-        LTC_ = gain(LTC,sys.argv[3])
+    url = 'https://api.coinbase.com/v2/prices/USD/spot?' 
+    response = requests.get(url).json()
+    print("\n\nBTC:")
+    BTC_= gain(BTC,response["data"][0]["amount"])
+    print("\nETH:")
+    ETH_ = gain(ETH,response["data"][1]["amount"])
+    print("\nLTC:")
+    LTC_ = gain(LTC,response["data"][2]["amount"])
 
-        print("--------")
-        x = BTC_[0].sum()+LTC_[0].sum()+ETH_[0].sum()
-        y = BTC_[1].sum()+LTC_[1].sum()+ETH_[1].sum()
-        print("Total {0:.0f} {1:.0f} {2:+.0f}".format(x,y,y-x))
-        print("\n")
+    print("--------")
+    x = BTC_[0].sum()+LTC_[0].sum()+ETH_[0].sum()
+    y = BTC_[1].sum()+LTC_[1].sum()+ETH_[1].sum()
+    print("Total {0:.0f} {1:.0f} {2:+.0f}".format(x,y,y-x))
+    print("\n")
 
