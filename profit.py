@@ -30,12 +30,15 @@ def gain(d,PRICE):
 if __name__=="__main__":
     url = 'https://api.coinbase.com/v2/prices/USD/spot?' 
     response = requests.get(url).json()
-    print("\n\nBTC:")
-    BTC_= gain(BTC,response["data"][0]["amount"])
-    print("\nETH:")
-    ETH_ = gain(ETH,response["data"][1]["amount"])
-    print("\nLTC:")
-    LTC_ = gain(LTC,response["data"][2]["amount"])
+    x = response["data"][0]["amount"]
+    print("\n\nBTC: ${}".format(x))
+    BTC_= gain(BTC,x)
+    y = response["data"][1]["amount"]
+    print("\n\nETH: ${}".format(y))
+    ETH_ = gain(ETH,y)
+    z = response["data"][2]["amount"]
+    print("\n\nLTC: ${}".format(z))
+    LTC_ = gain(LTC,z)
 
     print("--------")
     x = BTC_[0].sum()+LTC_[0].sum()+ETH_[0].sum()
