@@ -5,7 +5,9 @@ import csv
 
 BTC, LTC, ETH  = dict(), dict(), dict()
 
-with open('./transactions.txt') as infile:
+# replace with path/to/transactions.txt to access the script anywhere
+
+with open('transactions.txt') as infile:
     reader = csv.reader(infile)
     for rows in reader:
         if rows[0] == "BTC":
