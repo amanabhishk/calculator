@@ -35,10 +35,10 @@ if __name__=="__main__":
     x = response["data"][0]["amount"]
     print("\n\nBTC: ${}".format(x))
     BTC_= gain(BTC,x)
-    y = response["data"][1]["amount"]
+    y = response["data"][2]["amount"]
     print("\n\nETH: ${}".format(y))
     ETH_ = gain(ETH,y)
-    z = response["data"][2]["amount"]
+    z = response["data"][3]["amount"]
     print("\n\nLTC: ${}".format(z))
     LTC_ = gain(LTC,z)
 
